@@ -1,5 +1,5 @@
 classdef custom_MMOEADC < MyALGORITHM
-    
+
     methods
         function main(Algorithm,Problem)
 
@@ -19,7 +19,10 @@ classdef custom_MMOEADC < MyALGORITHM
                 Union=[Population Offspring];
                 Population=Environmental_Selection(Union,Problem.N,delta);
                 gen=gen+1;
-                Algorithm.FinalPop = Population;
+
+                % Customized the implementation to allow retrieval of final-generation individuals.
+                % Since MMOEA/DC does not use an archive, the final population is recovered instead.
+                Algorithm.FinalPop = Population; % <-- Added
             end
         end
     end

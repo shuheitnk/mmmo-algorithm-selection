@@ -31,7 +31,10 @@ classdef custom_NSGAII < MyALGORITHM
                 MatingPool = TournamentSelection(2,Problem.N,FrontNo,-CrowdDis);
                 Offspring  = OperatorGA(Problem,Population(MatingPool));
                 [Population,FrontNo,CrowdDis] = EnvironmentalSelection([Population,Offspring],Problem.N);
-                Algorithm.FinalPop = Population;
+
+                % Customized the implementation to allow retrieval of final-generation individuals.
+                % Since NSGA-II does not use an archive, the final population is recovered instead.
+                Algorithm.FinalPop = Population; % <-- Added
             end
         end
     end

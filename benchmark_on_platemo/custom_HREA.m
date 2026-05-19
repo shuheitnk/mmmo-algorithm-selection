@@ -44,7 +44,10 @@ classdef custom_HREA < MyALGORITHM
                 end
                 [Population,CrowdDis1] = EnvironmentalSelection([Population,Offspring],Problem.N);
                 [Archive,CrowdDis2]    = ArchiveUpdate([Archive,Offspring],Problem.N,eps,Problem.FE/Problem.maxFE);
-                Algorithm.FinalPop = Archive;
+
+                % Customized the implementation to enable retrieval of the final archive.
+                % Since HREA maintains an archive, the archive is saved at the final generation.
+                Algorithm.FinalPop = Archive; % <--
             end
         end
     end

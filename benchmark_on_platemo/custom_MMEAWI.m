@@ -50,7 +50,10 @@ classdef custom_MMEAWI < MyALGORITHM
                     [Population,pfit] = EnvironmentalSelection([Population,Offspring],Problem.N,kappa,Problem.FE/Problem.maxFE);
                     [Arcd,afit] = UpdateArc(Arcd,Offspring,Problem.N);
                 end
-                Algorithm.FinalPop = Arcd;
+
+                % Customized the implementation to enable retrieval of the final archive.
+                % Since MMEA-WI maintains an archive, the archive is saved at the final generation.
+                Algorithm.FinalPop = Arcd; % <--
             end
         end
     end
